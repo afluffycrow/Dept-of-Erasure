@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://by8yoorco6fax"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_5us0a"]
+[ext_resource type="Script" path="res://screen.gd" id="1_eedta"]
+[ext_resource type="Script" path="res://canvas_modulate.gd" id="3_tkcef"]
+[ext_resource type="Texture2D" uid="uid://i50rwgq42o34" path="res://icon.svg" id="4_rcbbl"]
+
+[sub_resource type="Gradient" id="Gradient_jnfvj"]
+offsets = PackedFloat32Array(0, 0.305195, 1)
+colors = PackedColorArray(0.71386, 0.0656646, 0.197251, 1, 0.805607, 0.614463, 0.532969, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rou6u"]
+gradient = SubResource("Gradient_jnfvj")
+
+[node name="Screen" type="Node2D" node_paths=PackedStringArray("ui", "canvas_modulate", "canvas_layer")]
+script = ExtResource("1_eedta")
+ui = NodePath("Camera2D/Clock")
+canvas_modulate = NodePath("Camera2D/CanvasLayer/CanvasModulate")
+canvas_layer = NodePath("Camera2D/CanvasLayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-108, -68)
+texture = ExtResource("4_rcbbl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Clock" type="Control" parent="Camera2D" node_paths=PackedStringArray("day_label", "time_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5us0a")
+day_label = NodePath("DayLabel")
+time_label = NodePath("TimeLabel")
+
+[node name="DayLabel" type="Label" parent="Camera2D/Clock"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TimeLabel" type="Label" parent="Camera2D/Clock"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 25.0
+offset_right = 39.0
+offset_bottom = 48.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Camera2D/CanvasLayer"]
+script = ExtResource("3_tkcef")
+gradient = SubResource("GradientTexture1D_rou6u")
