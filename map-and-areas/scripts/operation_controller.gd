@@ -99,7 +99,7 @@ func _morning():
 
 func _evening():
 	CLOCK.paused = true
-	#look through letters 
+	#look through letters HERE IS WHERE TO ADD CALLS TO THE MARKING FUNCTION 
 	enemy_knowledge += (1 * HIGH + 2 * MED + 3 * LOW + 4 * LOW) # 1 is portion/number of uncensored locations
 	# 2 is number of uncensored times, 3 is number of uncensored combat words, 4 is uncensored emotions
 	morale += (1*HIGH - 2*MED - 3*LOW) + 4 #1 is number of letters gone through

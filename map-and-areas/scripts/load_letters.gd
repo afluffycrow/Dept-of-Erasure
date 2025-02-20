@@ -24,11 +24,11 @@ func _get_filepaths():
 		file_name = dir.get_next()  
 
 func _create_letters():
-	for path in file_paths:
+	for txt_path in file_paths:
 		var new_letter: Letter = Letter.new()
-		var file = FileAccess.open(path,FileAccess.READ)
+		var file = FileAccess.open(txt_path,FileAccess.READ)
 		new_letter.contents = file.get_as_text()
-		var txt_name = path.get_file()
+		var txt_name = txt_path.get_file()
 		if txt_name.contains("win"):
 			new_letter.category = "Success"
 		if txt_name.contains("gen"):

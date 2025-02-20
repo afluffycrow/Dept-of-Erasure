@@ -76,6 +76,8 @@ script = ExtResource("14_ds8j2")
 areas = NodePath("../Areas")
 game = NodePath("..")
 ui = NodePath("../Screen/Clock")
+min_EK = 85
+max_EK = 100
 
 [node name="Screen" parent="." instance=ExtResource("15_xv222")]
 position = Vector2(1, -2)
