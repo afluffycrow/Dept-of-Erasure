@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://858wse83dbs1"]
 
 [ext_resource type="Texture2D" uid="uid://b8cjsnbdfgc3c" path="res://sprites/maP draft.png" id="1_aqudr"]
-[ext_resource type="Script" path="res://scripts/map_draft.gd" id="2_21s3u"]
-[ext_resource type="Script" path="res://load_letters.gd" id="2_yd4jg"]
+[ext_resource type="Script" path="res://scripts/assign_regions.gd" id="2_21s3u"]
+[ext_resource type="Script" path="res://scripts/load_letters.gd" id="2_yd4jg"]
 [ext_resource type="Texture2D" uid="uid://ca63sx68w738e" path="res://sprites/alberton.png" id="3_i42ca"]
 [ext_resource type="Texture2D" uid="uid://du5h1px1i6na3" path="res://sprites/oily-bluff.png" id="4_0uk3i"]
 [ext_resource type="Texture2D" uid="uid://dhlqba3j43mmf" path="res://sprites/stuffon-orchards.png" id="5_8ryfc"]
@@ -17,13 +17,14 @@
 [ext_resource type="Script" path="res://scripts/operation_controller.gd" id="14_ds8j2"]
 [ext_resource type="PackedScene" uid="uid://by8yoorco6fax" path="res://screen.tscn" id="15_xv222"]
 
-[node name="MapDraft" type="Sprite2D"]
-position = Vector2(-91, 50)
-texture = ExtResource("1_aqudr")
+[node name="Game" type="Node"]
 script = ExtResource("2_yd4jg")
 
 [node name="Areas" type="Node2D" parent="."]
 script = ExtResource("2_21s3u")
+
+[node name="Map" type="Sprite2D" parent="Areas"]
+texture = ExtResource("1_aqudr")
 
 [node name="Alberton" type="Sprite2D" parent="Areas"]
 texture = ExtResource("3_i42ca")
@@ -70,9 +71,10 @@ texture = ExtResource("13_tcl70")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="OperationController" type="Node2D" parent="." node_paths=PackedStringArray("areas", "ui")]
+[node name="OperationController" type="Node2D" parent="." node_paths=PackedStringArray("areas", "game", "ui")]
 script = ExtResource("14_ds8j2")
 areas = NodePath("../Areas")
+game = NodePath("..")
 ui = NodePath("../Screen/Clock")
 
 [node name="Screen" parent="." instance=ExtResource("15_xv222")]

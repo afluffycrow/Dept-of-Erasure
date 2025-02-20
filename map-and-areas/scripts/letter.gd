@@ -2,6 +2,7 @@ extends Resource
 class_name Letter
 
 @export_multiline var contents: String
+@export var category: String
 @export var tags: Array[String]
 
 var loc_censored:= 0.0
