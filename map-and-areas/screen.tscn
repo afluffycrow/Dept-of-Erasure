@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://by8yoorco6fax"]
+
+[ext_resource type="Script" path="res://scripts/ui_control.gd" id="1_5us0a"]
+[ext_resource type="Script" path="res://scripts/screen.gd" id="1_eedta"]
+[ext_resource type="Script" path="res://scripts/canvas_modulate.gd" id="3_tkcef"]
+
+[sub_resource type="Gradient" id="Gradient_jnfvj"]
+offsets = PackedFloat32Array(0.281609, 0.425287, 0.62069, 1)
+colors = PackedColorArray(0.10483, 0.00456951, 0.315591, 1, 0.690667, 0.15308, 0.123367, 1, 0.805607, 0.614463, 0.532969, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rou6u"]
+gradient = SubResource("Gradient_jnfvj")
+
+[node name="Screen" type="Node2D" node_paths=PackedStringArray("ui", "canvas_modulate")]
+script = ExtResource("1_eedta")
+ui = NodePath("Clock")
+canvas_modulate = NodePath("CanvasModulate")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+script = ExtResource("3_tkcef")
+gradient = SubResource("GradientTexture1D_rou6u")
+
+[node name="Clock" type="Control" parent="." node_paths=PackedStringArray("day_label", "time_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5us0a")
+day_label = NodePath("DayLabel")
+time_label = NodePath("TimeLabel")
+
+[node name="DayLabel" type="Label" parent="Clock"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TimeLabel" type="Label" parent="Clock"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 25.0
+offset_right = 39.0
+offset_bottom = 48.0

@@ -1,0 +1,69 @@
+[gd_scene load_steps=14 format=3 uid="uid://858wse83dbs1"]
+
+[ext_resource type="Texture2D" uid="uid://b8cjsnbdfgc3c" path="res://maP draft.png" id="1_aqudr"]
+[ext_resource type="Script" path="res://map_draft.gd" id="2_21s3u"]
+[ext_resource type="Texture2D" uid="uid://ca63sx68w738e" path="res://alberton.png" id="3_i42ca"]
+[ext_resource type="Texture2D" uid="uid://du5h1px1i6na3" path="res://oily-bluff.png" id="4_0uk3i"]
+[ext_resource type="Texture2D" uid="uid://dhlqba3j43mmf" path="res://stuffon-orchards.png" id="5_8ryfc"]
+[ext_resource type="Texture2D" uid="uid://ba4h1fqfknu3h" path="res://western-mountains.png" id="6_g3e4l"]
+[ext_resource type="Texture2D" uid="uid://cqvnvsksa44st" path="res://juns.png" id="7_awvyl"]
+[ext_resource type="Texture2D" uid="uid://dvsfln6vc4g6f" path="res://snaff.png" id="8_yt0fs"]
+[ext_resource type="Texture2D" uid="uid://bp7w2h14eg2vo" path="res://south-flingo.png" id="9_hsdqv"]
+[ext_resource type="Texture2D" uid="uid://bw13b5xqltawd" path="res://lake.png" id="10_8d4m4"]
+[ext_resource type="Texture2D" uid="uid://chvp0rmauho7w" path="res://christon.png" id="11_fwtnm"]
+[ext_resource type="Texture2D" uid="uid://ot6dw88xedql" path="res://eastern-dunes.png" id="12_epvau"]
+[ext_resource type="Texture2D" uid="uid://chb8ne01ovn56" path="res://map-capitol.png" id="13_tcl70"]
+
+[node name="MapDraft" type="Sprite2D" node_paths=PackedStringArray("area1", "area2", "area3")]
+position = Vector2(-25, 32)
+texture = ExtResource("1_aqudr")
+script = ExtResource("2_21s3u")
+area1 = NodePath("Areas/Alberton")
+area2 = NodePath("Areas/Oily-bluff")
+area3 = NodePath("Areas/Stuffon-orchards")
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="Alberton" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("3_i42ca")
+
+[node name="Oily-bluff" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("4_0uk3i")
+
+[node name="Stuffon-orchards" type="Sprite2D" parent="Areas"]
+position = Vector2(0, 1)
+texture = ExtResource("5_8ryfc")
+
+[node name="Western-mountains" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("6_g3e4l")
+
+[node name="Juns" type="Sprite2D" parent="Areas"]
+position = Vector2(0, 1)
+texture = ExtResource("7_awvyl")
+
+[node name="Snaff" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("8_yt0fs")
+
+[node name="South-flingo" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 2)
+texture = ExtResource("9_hsdqv")
+
+[node name="Lake" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("10_8d4m4")
+
+[node name="Christon" type="Sprite2D" parent="Areas"]
+position = Vector2(-1, 1)
+texture = ExtResource("11_fwtnm")
+
+[node name="Eastern-dunes" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 0)
+texture = ExtResource("12_epvau")
+
+[node name="Map-capitol" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("13_tcl70")

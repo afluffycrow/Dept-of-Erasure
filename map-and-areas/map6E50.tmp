@@ -1,0 +1,88 @@
+[gd_scene load_steps=17 format=3 uid="uid://858wse83dbs1"]
+
+[ext_resource type="Texture2D" uid="uid://b8cjsnbdfgc3c" path="res://sprites/maP draft.png" id="1_aqudr"]
+[ext_resource type="Script" path="res://scripts/map_draft.gd" id="2_21s3u"]
+[ext_resource type="Script" path="res://load_letters.gd" id="2_yd4jg"]
+[ext_resource type="Texture2D" uid="uid://ca63sx68w738e" path="res://sprites/alberton.png" id="3_i42ca"]
+[ext_resource type="Texture2D" uid="uid://du5h1px1i6na3" path="res://sprites/oily-bluff.png" id="4_0uk3i"]
+[ext_resource type="Texture2D" uid="uid://dhlqba3j43mmf" path="res://sprites/stuffon-orchards.png" id="5_8ryfc"]
+[ext_resource type="Texture2D" uid="uid://ba4h1fqfknu3h" path="res://sprites/western-mountains.png" id="6_g3e4l"]
+[ext_resource type="Texture2D" uid="uid://cqvnvsksa44st" path="res://sprites/juns.png" id="7_awvyl"]
+[ext_resource type="Texture2D" uid="uid://dvsfln6vc4g6f" path="res://sprites/snaff.png" id="8_yt0fs"]
+[ext_resource type="Texture2D" uid="uid://bp7w2h14eg2vo" path="res://sprites/south-flingo.png" id="9_hsdqv"]
+[ext_resource type="Texture2D" uid="uid://bw13b5xqltawd" path="res://sprites/lake.png" id="10_8d4m4"]
+[ext_resource type="Texture2D" uid="uid://chvp0rmauho7w" path="res://sprites/christon.png" id="11_fwtnm"]
+[ext_resource type="Texture2D" uid="uid://ot6dw88xedql" path="res://sprites/eastern-dunes.png" id="12_epvau"]
+[ext_resource type="Texture2D" uid="uid://chb8ne01ovn56" path="res://sprites/map-capitol.png" id="13_tcl70"]
+[ext_resource type="Script" path="res://scripts/operation_controller.gd" id="14_ds8j2"]
+[ext_resource type="PackedScene" uid="uid://by8yoorco6fax" path="res://screen.tscn" id="15_xv222"]
+
+[node name="MapDraft" type="Sprite2D"]
+position = Vector2(-91, 50)
+texture = ExtResource("1_aqudr")
+script = ExtResource("2_yd4jg")
+
+[node name="Areas" type="Node2D" parent="."]
+script = ExtResource("2_21s3u")
+
+[node name="Alberton" type="Sprite2D" parent="Areas"]
+texture = ExtResource("3_i42ca")
+
+[node name="Oily-bluff" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("4_0uk3i")
+
+[node name="Stuffon-orchards" type="Sprite2D" parent="Areas"]
+position = Vector2(0, 1)
+texture = ExtResource("5_8ryfc")
+
+[node name="Western-mountains" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("6_g3e4l")
+
+[node name="Juns" type="Sprite2D" parent="Areas"]
+position = Vector2(0, 1)
+texture = ExtResource("7_awvyl")
+
+[node name="Snaff" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("8_yt0fs")
+
+[node name="South-flingo" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 2)
+texture = ExtResource("9_hsdqv")
+
+[node name="Lake" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("10_8d4m4")
+
+[node name="Christon" type="Sprite2D" parent="Areas"]
+position = Vector2(-1, 1)
+texture = ExtResource("11_fwtnm")
+
+[node name="Eastern-dunes" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 0)
+texture = ExtResource("12_epvau")
+
+[node name="Map-capitol" type="Sprite2D" parent="Areas"]
+position = Vector2(1, 1)
+texture = ExtResource("13_tcl70")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="OperationController" type="Node2D" parent="." node_paths=PackedStringArray("areas", "ui")]
+script = ExtResource("14_ds8j2")
+areas = NodePath("../Areas")
+ui = NodePath("../Screen/Clock")
+
+[node name="Screen" parent="." instance=ExtResource("15_xv222")]
+position = Vector2(1, -2)
+script = null
+
+[node name="Clock" parent="Screen" index="1"]
+offset_left = -460.0
+offset_top = -285.0
+offset_right = -420.0
+offset_bottom = -245.0
+
+[editable path="Screen"]
