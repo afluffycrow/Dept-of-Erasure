@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://858wse83dbs1"]
+[gd_scene load_steps=18 format=3 uid="uid://858wse83dbs1"]
 
 [ext_resource type="Texture2D" uid="uid://b8cjsnbdfgc3c" path="res://sprites/maP draft.png" id="1_aqudr"]
 [ext_resource type="Script" path="res://scripts/assign_regions.gd" id="2_21s3u"]
@@ -15,12 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://ot6dw88xedql" path="res://sprites/eastern-dunes.png" id="12_epvau"]
 [ext_resource type="Texture2D" uid="uid://chb8ne01ovn56" path="res://sprites/map-capitol.png" id="13_tcl70"]
 [ext_resource type="Script" path="res://scripts/operation_controller.gd" id="14_ds8j2"]
+[ext_resource type="Script" path="res://area_labels.gd" id="15_jjn4x"]
 [ext_resource type="PackedScene" uid="uid://by8yoorco6fax" path="res://screen.tscn" id="15_xv222"]
 
 [node name="Game" type="Node"]
 script = ExtResource("2_yd4jg")
 
 [node name="Areas" type="Node2D" parent="."]
+position = Vector2(-18, 21)
 script = ExtResource("2_21s3u")
 
 [node name="Map" type="Sprite2D" parent="Areas"]
@@ -69,6 +71,44 @@ texture = ExtResource("12_epvau")
 position = Vector2(1, 1)
 texture = ExtResource("13_tcl70")
 
+[node name="z1_loc" type="Marker2D" parent="Areas"]
+position = Vector2(-223, -128)
+
+[node name="z1_loc2" type="Marker2D" parent="Areas"]
+position = Vector2(-317, -27)
+
+[node name="z1_loc3" type="Marker2D" parent="Areas"]
+position = Vector2(-354, 120)
+
+[node name="z1_loc4" type="Marker2D" parent="Areas"]
+position = Vector2(-267, 166)
+
+[node name="z1_loc5" type="Marker2D" parent="Areas"]
+position = Vector2(-11, -142)
+
+[node name="z1_loc6" type="Marker2D" parent="Areas"]
+position = Vector2(163, -41)
+
+[node name="z1_loc7" type="Marker2D" parent="Areas"]
+position = Vector2(-101, 118)
+
+[node name="z1_loc8" type="Marker2D" parent="Areas"]
+position = Vector2(-137, -13)
+
+[node name="z1_loc9" type="Marker2D" parent="Areas"]
+position = Vector2(132, 65)
+
+[node name="z1_loc10" type="Marker2D" parent="Areas"]
+position = Vector2(234, 28)
+
+[node name="z1_loc11" type="Marker2D" parent="Areas"]
+position = Vector2(-25, 18)
+
+[node name="Area Labels" type="Node2D" parent="Areas" node_paths=PackedStringArray("areas")]
+position = Vector2(17, -23)
+script = ExtResource("15_jjn4x")
+areas = NodePath("..")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="OperationController" type="Node2D" parent="." node_paths=PackedStringArray("areas", "game", "ui")]
@@ -76,8 +116,6 @@ script = ExtResource("14_ds8j2")
 areas = NodePath("../Areas")
 game = NodePath("..")
 ui = NodePath("../Screen/Clock")
-min_EK = 85
-max_EK = 100
 
 [node name="Screen" parent="." instance=ExtResource("15_xv222")]
 position = Vector2(1, -2)

@@ -1,8 +1,8 @@
 extends Node2D
 
-const HIGH = 5
-const MED = 2
-const LOW = 1
+const HIGH = 2
+const MED = 1
+const LOW = 0.5
 
 signal evening_start()
 
@@ -12,13 +12,13 @@ signal evening_start()
 @export var game: Node
 @export var ui = Control
 #sets min and max enemy knowledge for randomisation on each operation
-@export var min_EK = 12
-@export var max_EK = 35
+@export var min_EK = 0.2
+@export var max_EK = 1.0
 
 #create operation contest variables
 @onready var contested_regions: Array
-@onready var morale = 80.0
-@onready var enemy_knowledge = 35.0
+@onready var morale = 3.0
+@onready var enemy_knowledge = 0.0
 
 # create variables to track operations
 @onready var prev_op_loc: String
@@ -90,21 +90,27 @@ func _morning():
 				_update_location(letter)
 				in_tray_array.append(letter)
 				letters_added +=1
-	print(in_tray_array)
-	print("total"+str(letters_added))
-	print("fails"+str(fails_added))
-			
+	
 	
 	
 
 func _evening():
 	CLOCK.paused = true
 	#look through letters HERE IS WHERE TO ADD CALLS TO THE MARKING FUNCTION 
-	enemy_knowledge += (1 * HIGH + 2 * MED + 3 * LOW + 4 * LOW) # 1 is portion/number of uncensored locations
+	enemy_knowledge += (1 * HIGH + 2 * HIGH + 3 * LOW + 4 * LOW) # 1 is portion/number of uncensored locations
 	# 2 is number of uncensored times, 3 is number of uncensored combat words, 4 is uncensored emotions
-	morale += (1*HIGH - 2*MED - 3*LOW) + 4 #1 is number of letters gone through
-	#2 is total letter proportion censored, 3 is number of mood words censored
+	#MAX ADDED VALUE FOR ENEMY KNOWLEDGE IS 5 with current constants
+	morale += (1*LOW - 2*HIGH - 3*LOW) + 4 #1 is number of letters gone through 
+	#2 is total letter proportion censored, 3 is proportion of mood words censored
 	#4 is a letter by letter bonus amount (some positive letters will have this?)
+	#Expected morale gain range is 6.5 - 8.
+	
+	
+	if prev_op_outcome == "Success": # make mods depending on last outcome
+		morale += 1
+	else:
+		morale -= 0.2
+	
 	prev_op_loc = active_operation.location # store where the operation was
 	prev_op_type = active_operation.type # store what type of operation it was
 	var new_cont_set :=0

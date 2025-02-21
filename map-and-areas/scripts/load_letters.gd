@@ -36,5 +36,5 @@ func _create_letters():
 		if txt_name.contains("fail"):
 			new_letter.category = "Fail"
 		letters_array.append(new_letter)
-	print(letters_array)
-	 	#1xz`
+	
+	
