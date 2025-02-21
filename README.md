@@ -1,3 +1,1 @@
-# Dept-of-Erasure
-Tom To do: 
-- Decide which letters I am writing? Some to send to TopGods.
+my whole contribution to the game is in map-and-areas. 
